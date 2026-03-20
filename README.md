@@ -22,7 +22,15 @@ A backend API built using **Node.js, Express.js, and MongoDB (Mongoose)** that a
 
 ## 📂 Project Structure
 ```bash
-tree /F
+project/
+├── models/
+│ └── Post.js
+├── routes/
+│ └── blogRoutes.js
+├── db.js
+├── server.js
+├── .env
+├── .gitignore
 ```
 
 ## ⚙️ Installation & Setup
