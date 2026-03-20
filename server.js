@@ -1,23 +1,35 @@
-const express = require('express');
-const Post= require('./models/Post')
+require('dotenv').config();
+require('./db');
+const express= require('express')
+const router = require('./routes/blogRoutes')
 
-const app = express()
-app.use(express.json());
 
-const port = 5001;
 
-app.post("/posts", async (req, res)=>{
-    const post = await Post.create({
-        title:req.body.title,
-        content:req.body.content,
-        createdAt: new Date()
+
+const app= express();
+
+const port = process.env.PORT;
+
+
+//custom middleware
+app.use((req,res,next)=>{
+    const time= new Date().toLocaleTimeString()
+
+    console.log(`[${req.method}] ${req.path} - ${time}`)
+
+    next();
+})
+
+app.use(express.json())
+
+app.use(router)
+
+app.get('/',(req,res)=>{
+    res.json({
+        message: "Server Working..."
     })
-    res.json(post)
+    
 })
 
-app.get("/posts",async (req, res)=>{
-    const posts  = await Post.find();
-    res.json(posts)
-})
 
-app.listen(port, ()=>console.log(`Server started at Port: ${port}`))
+app.listen(port,()=>console.log(`Server is running on port:${port}`))
