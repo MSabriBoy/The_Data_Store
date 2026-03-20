@@ -21,7 +21,7 @@ A backend API built using **Node.js, Express.js, and MongoDB (Mongoose)** that a
 - Postman (API Testing)
 
 ## 📂 Project Structure
-```env
+```
 project/
 ├── models/
 │ └── Post.js
