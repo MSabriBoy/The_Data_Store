@@ -61,10 +61,13 @@ npm run dev
 ## 🔗 API Endpoints
 ➤ Create Post
 - POST /posts
+
 ➤ Get All Posts
 - GET /posts
+
 ➤ Get Post by ID
 - GET /posts/:id
+
 ➤ Delete Post
 - DELETE /posts/:id
 
