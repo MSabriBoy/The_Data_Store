@@ -1,11 +1,15 @@
 require('dotenv').config();
-require('./db');
+
 const express= require('express')
 const router = require('./routes/blogRoutes')
+
+require('./db'); 
 
 const app= express();
 
 const port = process.env.PORT || 5000;
+
+app.use(express.json())
 
 //custom middleware
 app.use((req,res,next)=>{
@@ -15,8 +19,6 @@ app.use((req,res,next)=>{
 
     next();
 })
-
-app.use(express.json())
 
 app.use(router)
 
