@@ -21,8 +21,8 @@ A backend API built using **Node.js, Express.js, and MongoDB (Mongoose)** that a
 - Postman (API Testing)
 
 ## 📂 Project Structure
-```
-tree
+```bash
+tree /F
 ```
 
 ## ⚙️ Installation & Setup
