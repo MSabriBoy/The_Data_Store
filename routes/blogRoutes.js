@@ -7,15 +7,6 @@ const router= express.Router()
 router.post("/posts", async (req,res)=>{
     const post = await Post.create(req.body)
     res.json(post)
-//     const newPost= {
-//         id: Date.now(),
-//         title: req.body.title
-//     }
-// blogPosts.push(newPost)
-//     res.json({
-// message:"Post added",
-// data: blogPosts
-//     })
 }) 
 
 router.get("/posts", async (req, res)=>{
@@ -23,14 +14,12 @@ router.get("/posts", async (req, res)=>{
     res.json(post)
 })
 
-router.get("/posts/:id",(req,res)=>{
-    const id = req.params.id
-    console.log(id)
-    res.json({
-        message:`post according to the id/:${id}`
-    })
+router.get("/posts/:id", async(req,res)=>{
+    const post = await Post.findById(req.params.id)
+    
+    console.log(req.params.id)
+    res.json(post)
 })
-
 
 
 router.put("/posts/:id",(req, res)=>{
@@ -43,18 +32,14 @@ router.put("/posts/:id",(req, res)=>{
 
 router.delete("/posts/:id", async (req, res)=>{
 
-    await Post.findByIdAndDelete(req.params.id)
+   const post= await Post.findByIdAndDelete(req.params.id)
 
     res.json({
-        message: `Post deleted with id : ${req.params.id}`
+        message: `Post deleted with id : ${req.params.id}`,
+        data: post
     })
 
-    // const id=req.params.id
-    // blogPosts = blogPosts.filter((post)=>post.id!=id)
-    // res.json({
-    //     message:`Post Deleted with id : ${id}`,
-    //     data: blogPosts
-    // })
+
 })
 
 //jwt fake authentication

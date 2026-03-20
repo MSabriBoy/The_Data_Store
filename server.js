@@ -3,13 +3,9 @@ require('./db');
 const express= require('express')
 const router = require('./routes/blogRoutes')
 
-
-
-
 const app= express();
 
-const port = process.env.PORT;
-
+const port = process.env.PORT || 5000;
 
 //custom middleware
 app.use((req,res,next)=>{
